@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/types";
 import Login from "@/pages/Login";
 import Home from "@/pages/Home";
+import Pod from "@/pages/Pod";
 import { RecoilRoot } from "recoil";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -29,7 +30,7 @@ const App = () => {
     <RecoilRoot>
       <NavigationContainer theme={rootTheme}>
         <RootStack.Navigator 
-          initialRouteName="Home" 
+          initialRouteName="Pod"
           screenOptions={{
             headerShown: false,
             animation: "fade",
@@ -37,8 +38,9 @@ const App = () => {
           }}
         >
           <RootStack.Group>
-            <RootStack.Screen name="Login" component={Login} />
             <RootStack.Screen name="Home" component={Home} />
+            <RootStack.Screen name="Login" component={Login} />
+            <RootStack.Screen name="Pod" component={Pod} />
           </RootStack.Group>
         </RootStack.Navigator>
       </NavigationContainer>
