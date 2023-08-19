@@ -68,7 +68,9 @@ const Recipe = ({ navigation }: props) => {
         <View style={styles.top}>
           <TouchableOpacity
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            onPress={() => navigation.goBack()}
+            onPress={() => {
+              navigation.navigate("Map");
+            }}
           >
             <BackWhiteIcon width={20} height={20} />
           </TouchableOpacity>

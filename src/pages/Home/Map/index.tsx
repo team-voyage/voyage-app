@@ -68,7 +68,7 @@ const Map = ({ navigation }: props) => {
               StatusBar.setBackgroundColor(colors.black);
               StatusBar.setBarStyle("light-content");
             }
-            navigation.goBack();
+            navigation.navigate("Main");
           }}
         >
           <PrevIcon width={10} height={20} />
