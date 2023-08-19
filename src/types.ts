@@ -6,5 +6,6 @@ export type RootStackParamList = {
 	Home: undefined;
 	Alert: AlertModalProps;
 	Confirm: ConfirmModalProps;
+	Pod: undefined;
 	Menu: undefined;
 };
