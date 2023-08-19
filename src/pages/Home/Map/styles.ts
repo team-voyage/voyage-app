@@ -81,6 +81,22 @@ export default StyleSheet.create({
   dest_cover: {
     width: "100%",
   },
+  dest_cover1: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 24,
+    justifyContent: "space-between",
+    paddingVertical: 16,
+    alignItems: "center",
+    gap: 10,
+    alignSelf: "stretch",
+    borderRadius: 77,
+    backgroundColor: colors.black,
+  },
+  dest_btn1: {
+    color: colors.white,
+  },
   add: {
     color: opacity(colors.black, 0.5),
     fontSize: 12,
@@ -104,5 +120,5 @@ export default StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "500",
     color: colors.white,
-  }
+  },
 });

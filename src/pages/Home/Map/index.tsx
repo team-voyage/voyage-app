@@ -6,23 +6,37 @@ import colors from "@/utils/colors";
 import PrevIcon from "@/assets/icons/prev.svg";
 import CalendarIcon from "@/assets/icons/calendarblack.svg";
 import DistanceIcon from "@/assets/icons/distance.svg";
+import XWhiteIcon from "@/assets/icons/xwhite.svg";
 
 import { HomeStackParamList } from "../types";
 import BackMap from "@/components/BackMap";
 import styles from "./styles";
-import { SwippableModalRefType } from "react-native-swippable-modal";
+import { atom, useRecoilState } from "recoil";
+
+export const listAtom = atom({
+  key: "listAtom",
+  default: [
+    {
+      name: "부산광역시 해운대구 우동",
+      latitude: 35.13033261235449,
+      longitude: 129.11098801797002,
+    },
+    {
+      name: "부산광역시 해운대구 우동2",
+      latitude: 35.13133261235449,
+      longitude: 129.21098801797002,
+    }
+  ],
+});
 
 type props = NativeStackScreenProps<HomeStackParamList, "Map">;
-const Map = ({ navigation: homeNavigation }: props) => {
+const Map = ({ navigation }: props) => {
+  const [list, setList] = useRecoilState(listAtom);
+
   if(Platform.OS === "android") {
     StatusBar.setBackgroundColor(colors.white);
     StatusBar.setBarStyle("dark-content");
   }
-
-  const modalRef = React.useRef<SwippableModalRefType>(null);
-  React.useEffect(() => {
-    modalRef.current?.show();
-  }, []);
 
   return (
     <SafeAreaView style={{width: "100%", height: "100%"}}>
@@ -46,13 +60,39 @@ const Map = ({ navigation: homeNavigation }: props) => {
           <Text style={styles.date}>23 August, 2023</Text>
         </TouchableOpacity>
 
+
         <View style={styles.destinations}>
-          <TouchableOpacity style={styles.dest_cover}>
-            <Text style={styles.dest_btn}>Select a place to visit</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.dest_cover}>
-            <Text style={styles.dest_btn}>Select a place to visit</Text>
-          </TouchableOpacity>
+          {
+            list.map((item, i) => (
+              <View 
+                style={styles.dest_cover1}
+                key={i}
+              >
+                <Text style={styles.dest_btn1}>{item.name}</Text>
+                <TouchableOpacity
+                  hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+                  onPress={() => {
+                    setList(list.filter((_, j) => j !== i));
+                  }}
+                >
+                  <XWhiteIcon width={20} height={20} />
+                </TouchableOpacity>
+              </View>
+            ))
+          }
+          {
+            list.length < 2 ? Array(2 - list.length).fill(0).map((_, i) => (
+              <TouchableOpacity 
+                style={styles.dest_cover}
+                key={i}
+                onPress={() => {
+                  navigation.navigate("Search");
+                }}
+              >
+                <Text style={styles.dest_btn}>Select a place to visit</Text>
+              </TouchableOpacity>
+            )) : <></>
+          }
           
           <TouchableOpacity 
             style={styles.dest_cover}
