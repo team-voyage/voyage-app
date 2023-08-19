@@ -11,7 +11,8 @@ import XWhiteIcon from "@/assets/icons/xwhite.svg";
 import { HomeStackParamList } from "../types";
 import BackMap from "@/components/BackMap";
 import styles from "./styles";
-import { atom, useRecoilState } from "recoil";
+import { atom, useRecoilState, useRecoilValue } from "recoil";
+import api from "@/utils/api";
 
 export const listAtom = atom<{
   name: string;
@@ -48,9 +49,35 @@ export const listAtom = atom<{
   ],
 });
 
+export const latlongAtom = atom<{
+  latitude: number;
+  longitude: number;
+}>({
+  key: "latlongAtom",
+  default: {
+    latitude: 35.13033261235449,
+    longitude: 129.11098801797002,
+  },
+});
+
 type props = NativeStackScreenProps<HomeStackParamList, "Map">;
 const Map = ({ navigation }: props) => {
   const [list, setList] = useRecoilState(listAtom);
+  const { latitude, longitude } = useRecoilValue(latlongAtom);
+
+  const [addr, setAddr] = React.useState("");
+
+  const getAddr = async () => {
+    const { data } = await api({
+      method: "get",
+      url: `/api/getAddr?lon=${longitude}&lat=${latitude}`,
+    });
+    setAddr(data);
+  };
+
+  React.useEffect(() => {
+    getAddr();
+  }, [latitude, longitude]);
 
   if(Platform.OS === "android") {
     StatusBar.setBackgroundColor(colors.white);
@@ -75,7 +102,7 @@ const Map = ({ navigation }: props) => {
         </TouchableOpacity>
         <View style={styles.topMiddle}>
           <DistanceIcon width={15} height={15} />
-          <Text style={styles.topMiddleText}>부산광역시 해운대구 우동</Text>
+          <Text style={styles.topMiddleText}>{addr}</Text>
         </View>
         <View style={styles.topRight} />
       </View>
