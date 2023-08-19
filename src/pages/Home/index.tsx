@@ -12,14 +12,14 @@ import Recipe from "./Recipe";
 type props = NativeStackScreenProps<RootStackParamList, "Home">;
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
-const Home = ({ navigation: rootNavigation }: props) => {
+const Home = ({ navigation }: props) => {
   return (
     <View style={{
       width: "100%",
       height: "100%",
     }}>
       <HomeStack.Navigator
-        initialRouteName="Main"
+        initialRouteName="Recipe"
         screenOptions={{
           headerShown: false,
           animation: "slide_from_right",

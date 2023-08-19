@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://192.168.145.139:3000",
+  baseURL: "https://voyage-one.vercel.app",
 });
+
+export const source = axios.CancelToken.source();
 
 export default api;
