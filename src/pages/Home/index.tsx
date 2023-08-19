@@ -19,7 +19,7 @@ const Home = ({ navigation }: props) => {
       height: "100%",
     }}>
       <HomeStack.Navigator
-        initialRouteName="Main"
+        initialRouteName="Recipe"
         screenOptions={{
           headerShown: false,
           animation: "slide_from_right",

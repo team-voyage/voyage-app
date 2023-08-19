@@ -10,7 +10,7 @@ import GhktkfvyIcon from "@/assets/icons/ghktkfvy.svg";
 
 import { HomeStackParamList } from "../types";
 import styles from "./styles";
-import api from "@/utils/api";
+import api, { source } from "@/utils/api";
 import { listAtom } from "../Map";
 import { useRecoilState } from "recoil";
 
@@ -24,16 +24,18 @@ const Search = ({ navigation }: props) => {
     address: string;
   }[]>([]);
 
-  const getData = async () => {
+  const getData = () => {
     if(input === "") return setData([]);
-    const { data } = await api({
+    source.cancel();
+    api({
       method: "post",
       url: "/api/search",
       data: {
         location: input,
       }
-    });
-    setData(data);
+    }).then(({ data }) => {
+      setData(data);
+    }).catch(() => {});
   };
 
   React.useEffect(() => {
@@ -84,6 +86,7 @@ const Search = ({ navigation }: props) => {
               });
               setList([...list, {
                 name: title,
+                address: item.address,
                 latitude: parseFloat(data[0].y),
                 longitude: parseFloat(data[0].x),
               }]);

@@ -2,5 +2,174 @@ import colors, { opacity } from "@/utils/colors";
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  
+  safeArea: {
+    width: "100%", 
+    height: "100%",
+    backgroundColor: colors.white,
+  },
+  safeAreaTop: {
+    width: "100%",
+    height: "50%",
+    backgroundColor: colors.black,
+    position: "absolute",
+    top: 0,
+  },
+  top: {
+    width: "100%",
+    display: "flex",
+    paddingHorizontal: 24,
+    paddingTop: 28,
+    paddingBottom: 84,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 16,
+    backgroundColor: colors.black,
+
+  },
+  topTextDate: {
+    fontSize: 18,
+    color: colors.white,
+    fontWeight: "400",
+    fontStyle: "normal",
+  },
+  topTextTitleBold: {
+    fontSize: 18,
+    color: colors.white,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  topTextTitle: {
+    fontSize: 16,
+    color: colors.white,
+    fontStyle: "normal",
+    fontWeight: "400",
+  },
+  ticketZ: {
+    transform: [{ translateY: -56 }],
+    height: "100%",
+  },
+  btncover: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,    
+    marginVertical: -12,
+    transform: [{ translateY: -28 }],
+  },
+  btn: {
+    color: colors.white,
+    backgroundColor: colors.black,
+    textAlign: "center",
+    paddingVertical: 16,
+    width: "100%",
+    borderRadius: 14,
+  },
+  ticket: {
+    backgroundColor: colors.white,
+    display: "flex",
+    flexDirection: "column",
+    padding: 24,
+    alignItems: "flex-start",
+    gap: 20,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    overflow: "hidden",
+  },
+  title: {
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "700",
+    color: colors.black,
+  },
+  tickeLine: {
+    width: "100%",
+    height: 3,
+    borderRadius: 5,
+    backgroundColor: colors.black,
+  },
+  icon: {
+    marginVertical: 16,
+  },
+  ticketContent: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 24,
+    alignSelf: "stretch",
+    paddingHorizontal: 24,
+
+    paddingBottom: 24,
+    borderColor: opacity(colors.black, 0.2),
+    borderBottomWidth: 1,
+  },
+  stations: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 8,
+    width: "100%",
+  },
+  station: {
+    color: colors.black,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  ticketInfo: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    aliginSelf: "stretch",
+    flexDirection: "row",
+  },
+  ticketInfoItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 4,
+    opacity: 0,
+  },
+  ticketInfoItem2: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: 4,
+  },
+  ticketInfoTitle: {
+    color: opacity(colors.black, .5),
+    fontSize: 12,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  ticketInfoCont: {
+    color: colors.black,
+    fontSize: 18,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  ticketInfoCont2: {
+    color: colors.black,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  total: {
+    color: opacity(colors.black, .5),
+    fontSize: 14,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  amnt: {
+    color: colors.black,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "700"
+  },
+  totals: {
+    paddingHorizontal: 24,
+  }
 });

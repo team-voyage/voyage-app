@@ -13,19 +13,38 @@ import BackMap from "@/components/BackMap";
 import styles from "./styles";
 import { atom, useRecoilState } from "recoil";
 
-export const listAtom = atom({
+export const listAtom = atom<{
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+}[]>({
   key: "listAtom",
   default: [
-    {
-      name: "부산광역시 해운대구 우동",
-      latitude: 35.13033261235449,
-      longitude: 129.11098801797002,
-    },
-    {
-      name: "부산광역시 해운대구 우동2",
-      latitude: 35.13133261235449,
-      longitude: 129.21098801797002,
-    }
+    // {
+    //   name: "ㅁㄴㅇㄹ1",
+    //   address: "부산광역시 남구 분포로 113",
+    //   latitude: 35.13033261235449,
+    //   longitude: 129.11098801797002,
+    // },
+    // {
+    //   name: "ㅁㄴㅇㄹ2",
+    //   address: "부산광역시 남구 분포로 111",
+    //   latitude: 35.13033261235449,
+    //   longitude: 129.11098801797002,
+    // },
+    // {
+    //   name: "ㅁㄴㅇㄹ3",
+    //   address: "부산광역시 동구 중앙대로 206",
+    //   latitude: 35.13033261235449,
+    //   longitude: 129.11098801797002,
+    // },
+    // {
+    //   name: "ㅁㄴㅇㄹ2",
+    //   address: "부산광역시 남구 분포로 111",
+    //   latitude: 35.13033261235449,
+    //   longitude: 129.11098801797002,
+    // },
   ],
 });
 
@@ -44,7 +63,13 @@ const Map = ({ navigation }: props) => {
       <View style={styles.top}>
         <TouchableOpacity
           hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-          onPress={() => navigation.goBack()}
+          onPress={() => {
+            if(Platform.OS === "android") {
+              StatusBar.setBackgroundColor(colors.black);
+              StatusBar.setBarStyle("light-content");
+            }
+            navigation.goBack();
+          }}
         >
           <PrevIcon width={10} height={20} />
         </TouchableOpacity>
@@ -106,7 +131,15 @@ const Map = ({ navigation }: props) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity
+          style={[styles.btn, {
+            opacity: list.length < 2 ? 0.3 : 1,
+          }]}
+          disabled={list.length < 2}
+          onPress={() => {
+            navigation.navigate("Recipe");
+          }}
+        >
           <Text style={styles.btn_text}>create</Text>
         </TouchableOpacity>
       </View>
