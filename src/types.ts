@@ -8,4 +8,5 @@ export type RootStackParamList = {
 	Confirm: ConfirmModalProps;
 	Pod: undefined;
 	Menu: undefined;
+	Game: undefined;
 };

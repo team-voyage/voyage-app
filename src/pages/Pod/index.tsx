@@ -5,6 +5,7 @@ import { View } from "react-native";
 import React from "react";
 import Main from "./Main";
 import Message from "./Message";
+import Game from "./Game";
 // import Map from "./Map";
 // import Search from "./Search";
 // import Recipe from "./Recipe";
@@ -37,6 +38,7 @@ const Pod = ({ navigation: rootNavigation }: props) => {
         }}>
           <PodStack.Screen name="Main" component={Main} />
           <PodStack.Screen name="Message" component={Message} />
+          <PodStack.Screen name="Game" component={Game} />
         </PodStack.Group>
 
       </PodStack.Navigator>
