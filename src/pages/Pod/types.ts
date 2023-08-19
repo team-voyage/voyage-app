@@ -6,4 +6,6 @@ export type PodStackParamList = RootStackParamList & {
 		name?: string;
 	};
 	Game: undefined;
+	Settings: undefined;
+	Camera: undefined;
 };

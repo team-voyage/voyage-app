@@ -31,7 +31,7 @@ const App = () => {
     <RecoilRoot>
       <NavigationContainer theme={rootTheme}>
         <RootStack.Navigator 
-          initialRouteName="Pod"
+          initialRouteName="Login"
           screenOptions={{
             headerShown: false,
             animation: "fade",
@@ -39,8 +39,8 @@ const App = () => {
           }}
         >
           <RootStack.Group>
-            <RootStack.Screen name="Home" component={Home} />
             <RootStack.Screen name="Login" component={Login} />
+            <RootStack.Screen name="Home" component={Home} />
             <RootStack.Screen name="Pod" component={Pod} />
           </RootStack.Group>
           <RootStack.Group screenOptions={{ 

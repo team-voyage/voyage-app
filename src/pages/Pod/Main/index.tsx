@@ -121,7 +121,14 @@ const Main = ({ navigation: podNavigation }: props) => {
           <SafeAreaView style={styles.safeareaview}>
             <View style={styles.title}>
               <Text style={styles.titleText}>My Pod</Text>
-              <Settings />
+              <TouchableOpacity
+                hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+                onPress={() => {
+                  podNavigation.navigate("Settings");
+                }}
+              >
+                <Settings />
+              </TouchableOpacity>
             </View>
             <View style={styles.content}>
               { user("Haeundae!!🔥", "user1", "The payment has been completed.", "13:01 PM", 2) }

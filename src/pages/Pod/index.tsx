@@ -6,14 +6,14 @@ import React from "react";
 import Main from "./Main";
 import Message from "./Message";
 import Game from "./Game";
-// import Map from "./Map";
-// import Search from "./Search";
-// import Recipe from "./Recipe";
+import Settings from "./Settings";
+import Camera from "./Camera";
+
 
 type props = NativeStackScreenProps<RootStackParamList, "Pod">;
 const PodStack = createNativeStackNavigator<PodStackParamList>();
 
-const Pod = ({ navigation: rootNavigation }: props) => {
+const Pod = ({ navigation }: props) => {
   return (
     <View style={{
       width: "100%",
@@ -23,24 +23,25 @@ const Pod = ({ navigation: rootNavigation }: props) => {
         initialRouteName="Main"
         screenOptions={{
           headerShown: false,
+          animation: "fade",
+          animationDuration: 100,
+        }}>
+        <PodStack.Screen name="Main" component={Main} />
+        <PodStack.Screen name="Message" component={Message} />
+        <PodStack.Screen name="Camera" component={Camera} />
+        <PodStack.Group screenOptions={{
+          headerShown: false,
           animation: "slide_from_right",
           animationDuration: 100,
         }}>
-        {/* <PodStack.Group>
-          <PodStack.Screen name="Main" component={Main} />
-          <PodStack.Screen name="Message" component={Message} />
-        </PodStack.Group> */}
 
-        <PodStack.Group screenOptions={{
-          headerShown: false,
-          animation: "fade",
-          animationDuration: 100, 
-        }}>
           <PodStack.Screen name="Main" component={Main} />
           <PodStack.Screen name="Message" component={Message} />
           <PodStack.Screen name="Game" component={Game} />
-        </PodStack.Group>
 
+          <PodStack.Screen name="Settings" component={Settings} />
+
+        </PodStack.Group>
       </PodStack.Navigator>
     </View>
   );
