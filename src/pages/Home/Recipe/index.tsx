@@ -149,6 +149,7 @@ const Recipe = ({ navigation }: props) => {
           }
           setList([]);
           navigation.navigate("Main");
+          navigation.navigate("Pod");
         }}>
           <Text style={styles.btn}>OK</Text>
         </TouchableOpacity>
