@@ -50,7 +50,10 @@ const Camera = ({ navigation: messageNavigation }: props) => {
         </View>        
         <View style={styles.bottom}>
           <Text style={styles.text}>Take a picture of &apos;Subway&apos;!</Text>
-          <TouchableOpacity style={styles.chaptO}>
+          <TouchableOpacity 
+            style={styles.chaptO}
+            onPress={() => messageNavigation.goBack()}
+          >
             <View style={styles.chapt}/>
           </TouchableOpacity>
         </View>
