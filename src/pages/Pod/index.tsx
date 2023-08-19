@@ -34,13 +34,8 @@ const Pod = ({ navigation }: props) => {
           animation: "slide_from_right",
           animationDuration: 100,
         }}>
-
-          <PodStack.Screen name="Main" component={Main} />
-          <PodStack.Screen name="Message" component={Message} />
           <PodStack.Screen name="Game" component={Game} />
-
           <PodStack.Screen name="Settings" component={Settings} />
-
         </PodStack.Group>
       </PodStack.Navigator>
     </View>

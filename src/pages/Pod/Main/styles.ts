@@ -54,4 +54,12 @@ export default StyleSheet.create({
   text: {
     color: "black",
   },
+  asdf: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: 24,
+    
+  }
 });

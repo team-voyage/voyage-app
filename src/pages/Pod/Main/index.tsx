@@ -2,11 +2,12 @@ import React, { Fragment } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Platform, SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-import colors from "@/utils/colors";
+import colors, { opacity } from "@/utils/colors";
 
 import { PodStackParamList } from "../types";
 import styles from "./styles";
 import Settings from "@/assets/icons/settings.svg";
+import PrevIcon from "@/assets/icons/backWhite.svg";
 
 import User1 from "@/assets/thumbnails/user1.svg";
 import User2 from "@/assets/thumbnails/user2.svg";
@@ -47,14 +48,17 @@ const Main = ({ navigation: podNavigation }: props) => {
         gap: 4
       },
       name: {
+        color: colors.black,
         fontSize: 16,
         fontWeight: "600"
       },
       status: {
+        color: opacity(colors.black, .3),
         fontSize: 12,
         fontWeight: "400"
       },
       time: {
+        color: colors.black,
         fontSize: 8,
         fontWeight: "400",
       },
@@ -120,7 +124,17 @@ const Main = ({ navigation: podNavigation }: props) => {
         <View style={styles.background}>
           <SafeAreaView style={styles.safeareaview}>
             <View style={styles.title}>
-              <Text style={styles.titleText}>My Pod</Text>
+              <View style={styles.asdf}>
+                <TouchableOpacity
+                  hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+                  onPress={() => {
+                    podNavigation.navigate("Home");
+                  }}
+                >
+                  <PrevIcon />
+                </TouchableOpacity>
+                <Text style={styles.titleText}>My Pod</Text>
+              </View>
               <TouchableOpacity
                 hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
                 onPress={() => {

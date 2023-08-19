@@ -73,6 +73,7 @@ export default StyleSheet.create({
     fontSize: 12,
     fontWeight: "600",
     marginRight: 54,
+    color: colors.black,
   },
   stack: {
     display: "flex",
@@ -83,6 +84,7 @@ export default StyleSheet.create({
   time: {
     fontSize: 8,
     fontWeight: "400",
+    color: colors.black,
   },
   msgContent: {
     paddingLeft: 16,
@@ -118,19 +120,27 @@ export default StyleSheet.create({
     backgroundColor: "#F1F1F1",
     borderRadius: 24,
     justifyContent: "space-between",
+    alignItems: "center",
   },
   send: {
-    padding: 8,
     borderRadius: 24,
     backgroundColor: colors.black,
+    width: 42,
+    height: 42,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     flex: 1,
     marginLeft: 24,
-    fontSize: 18
+    fontSize: 18,
+    color: colors.black,
   },
   textInput: {
     flex: 1,
+    color: colors.black,
+    paddingHorizontal: 16,
   },
   game: {
     position: "absolute",
@@ -148,6 +158,7 @@ export default StyleSheet.create({
   gameStatus: {
     fontSize: 16,
     fontWeight: "600",
+    color: colors.black,
   },
   gameStart: {
     paddingLeft: 20,
@@ -159,5 +170,82 @@ export default StyleSheet.create({
   },
   gameStartText : {
     color: colors.white,
+  },
+  modal: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    backgroundColor: opacity(colors.black, 0.3),
+    zIndex: 1,
+    position: "absolute",
+    top: 0,
+    paddingHorizontal: 24,
+  },
+  modalBackground: {
+    padding: 24,
+    backgroundColor: colors.white,
+    borderRadius: 24,
+    width: "100%",
+  },
+  modalTitle: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // width: "100%"
+  },
+  modalTitleText: {
+    color: colors.black,
+    fontSize: 18,
+    textAlign: "center",
+    fontStyle: "normal",
+    fontWeight: "600",
+  },
+  modalContent:{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 24,
+    paddingHorizontal: 24,
+    paddingTop: 24,
+  },
+  name: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: colors.black,
+  },
+  leftSide: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 12,
+  },
+  rightSide: {},
+  arrived: {
+    fontSize: 10,
+    fontWeight: "500",
+    color: colors.white,
+    backgroundColor: "#76DF8D",
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 12,
+  },
+  mdcontent: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    width: "100%",
+  },
+  profiles: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   }
 });
