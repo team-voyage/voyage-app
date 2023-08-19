@@ -76,5 +76,12 @@ export default StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     gap: 18,
-  }
+  },
+  load: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 4,
+  },
 });

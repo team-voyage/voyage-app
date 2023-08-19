@@ -9,6 +9,7 @@ import styles from "./styles";
 import CalendarIcon from "@/assets/icons/calendar.svg";
 import SendIcon from "@/assets/icons/send.svg";
 import api from "@/utils/api";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 type props = NativeStackScreenProps<HomeStackParamList, "Main">;
 const Main = ({ navigation: homeNavigation }: props) => {
