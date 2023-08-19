@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   modal: {
-    backgroundColor: opacity(colors.black, 0.25),
+    backgroundColor: "#ffffff00",
   },
   container: {
     backgroundColor: opacity(colors.white, 1),

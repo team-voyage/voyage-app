@@ -2,5 +2,107 @@ import colors, { opacity } from "@/utils/colors";
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  
+  top: {
+    display: "flex",
+    width: "100%",
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: colors.white,
+    flexDirection: "row",
+  },
+  topRight: {
+    width: 10,
+    height: 20,
+  },
+  topMiddle: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  topMiddleText: {
+    color: colors.black,
+    fontSize: 16,
+    fontStyle: "normal",
+    fontWeight: "400",
+  },
+  bottom: {
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: colors.white,
+    width: "100%",
+    overflow: "hidden",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+
+    display: "flex",
+    paddingHorizontal: 24,
+    paddingVertical: 38,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 24,
+    flexShrink: 0,
+  },
+  dates: {
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    flexDirection: "row",
+  },
+  date: {
+    color: colors.black,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  destinations: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+    alignSelf: "stretch",
+    width: "100%",
+  },
+  dest_btn: {
+    display: "flex",
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    alignItems: "center",
+    gap: 10,
+    alignSelf: "stretch",
+    borderRadius: 77,
+    backgroundColor: colors.gray,
+    color: opacity(colors.black, 0.5),
+    width: "100%",
+  },
+  dest_cover: {
+    width: "100%",
+  },
+  add: {
+    color: opacity(colors.black, 0.5),
+    fontSize: 12,
+    fontStyle: "normal",
+    fontWeight: "500",
+    width: "100%",
+    textAlign: "center",
+  },
+  btn: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    paddingVertical: 12,
+    borderRadius: 12,
+    backgroundColor: opacity(colors.black, 1),
+    width: "100%",
+  },
+  btn_text: {
+    fontSize: 16,
+    fontStyle: "normal",
+    fontWeight: "500",
+    color: colors.white,
+  }
 });
