@@ -14,6 +14,9 @@ const SsoModal = ({ title, modalRef, children }: props) => {
       modalInnerContainerStyle={styles.innerContainer}
       modalContainerStyle={styles.container}
       modalLineStyle={styles.line}
+      //배경 클릭 안되게
+      // modalOverlayStyle={styles.overlay}
+      disableClose={true}
     >
       <View style={styles.titleView}>
         <View />
