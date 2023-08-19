@@ -79,9 +79,11 @@ const Main = ({ navigation: podNavigation }: props) => {
       }
     });
     return (
-      <TouchableOpacity onPress={() => {
-        podNavigation.navigate("Message");
-      }}>
+      <TouchableOpacity onPress={() => 
+        podNavigation.navigate("Message", {
+          name: name
+        })
+      }>
         <View style={userStyle.frame}>
           <View style={userStyle.profile}>
 

@@ -18,13 +18,13 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
+    // justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 36,
-    paddingBottom: 36,
+    paddingBottom: 120,
     paddingLeft: 24,
     paddingRight: 24,
-    gap: 36,
+    gap: 18,
   },
   title: {
     padding: 24,
@@ -59,16 +59,54 @@ export default StyleSheet.create({
   center: {
   },
   message: {
-
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    // backgroundColor: colors.black,
+  },
+  sender: {
+    // display: "flex",
+    // flexDirection: "row",
+    // alignItems: "center",
+    // justifyContent: "flex-end",
+    fontSize: 12,
+    fontWeight: "600",
+    marginRight: 54,
   },
   stack: {
-
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-end",
+    gap: 8,
+  },
+  time: {
+    fontSize: 8,
+    fontWeight: "400",
   },
   msgContent: {
-
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 12,
+    paddingBottom: 12,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    borderTopLeftRadius: 24,
+    backgroundColor: colors.black,
+    color: colors.white,
+  },
+  msgText: {
+    color: colors.white,
+    backgroundColor: colors.black,
+    fontSize: 12,
+    fontWeight: "600",
   },
   profile: {
-    
+    width: 48,
+    height: 48,
+    backgroundColor: colors.black,
+    borderRadius: 24,
+    transform: [{ translateY: -12 }],
   },
   textbox: {
     position: "absolute",
@@ -90,5 +128,36 @@ export default StyleSheet.create({
     flex: 1,
     marginLeft: 24,
     fontSize: 18
+  },
+  textInput: {
+    flex: 1,
+  },
+  game: {
+    position: "absolute",
+    bottom: 120,
+    width: "100%",
+    height: 144,
+    backgroundColor: "#F1F1F1",
+    borderRadius: 24,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 16
+  },
+  gameStatus: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  gameStart: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 16,
+    paddingBottom: 16,
+    backgroundColor: colors.black,
+    borderRadius: 12,
+  },
+  gameStartText : {
+    color: colors.white,
   }
 });
