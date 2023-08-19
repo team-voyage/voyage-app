@@ -63,7 +63,9 @@ const Main = ({ navigation: homeNavigation }: props) => {
               <Text style={styles.helloText}>Welcome,</Text>
               <Text style={styles.busan}>BUSAN</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              homeNavigation.navigate("Pod");
+            }}>
               <Image source={require("@/assets/images/me.png")} style={styles.busanImage} />
             </TouchableOpacity>
           </View>
