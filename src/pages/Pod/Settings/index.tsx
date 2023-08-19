@@ -1,6 +1,6 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Animated, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Animated, Platform, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 import colors, { opacity } from "@/utils/colors";
 import PrevIcon from "@/assets/icons/prev.svg";
@@ -13,6 +13,11 @@ import styles from "./styles";
 type props = NativeStackScreenProps<PodStackParamList, "Settings">;
 
 const Settings = ({ navigation: podNavigation }: props) => {
+  if(Platform.OS === "android") {
+    StatusBar.setBackgroundColor(colors.white);
+    StatusBar.setBarStyle("dark-content");
+  }
+
   const weightData = ["light", "middle", "heavy"];
   const genderData = ["man", "woman"];
 
@@ -28,7 +33,13 @@ const Settings = ({ navigation: podNavigation }: props) => {
       <View style={styles.top}>
         <TouchableOpacity
           hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
-          onPress={() => podNavigation.navigate("Main")}
+          onPress={() => {
+            if(Platform.OS === "android") {
+              StatusBar.setBackgroundColor(colors.black);
+              StatusBar.setBarStyle("light-content");
+            }
+            podNavigation.navigate("Main");
+          }}
         >
           <PrevIcon height={20} width={20} />
         </TouchableOpacity>

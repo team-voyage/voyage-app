@@ -6,6 +6,7 @@ import React from "react";
 import Main from "./Main";
 import Message from "./Message";
 import Settings from "./Settings";
+import Camera from "./Camera";
 
 type props = NativeStackScreenProps<RootStackParamList, "Pod">;
 const PodStack = createNativeStackNavigator<PodStackParamList>();
@@ -17,7 +18,7 @@ const Pod = ({ navigation }: props) => {
       height: "100%",
     }}>
       <PodStack.Navigator
-        initialRouteName="Main"
+        initialRouteName="Camera"
         screenOptions={{
           headerShown: false,
           animation: "fade",
@@ -25,6 +26,7 @@ const Pod = ({ navigation }: props) => {
         }}>
         <PodStack.Screen name="Main" component={Main} />
         <PodStack.Screen name="Message" component={Message} />
+        <PodStack.Screen name="Camera" component={Camera} />
         <PodStack.Group screenOptions={{
           headerShown: false,
           animation: "slide_from_right",
