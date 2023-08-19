@@ -18,7 +18,7 @@ const Pod = ({ navigation }: props) => {
       height: "100%",
     }}>
       <PodStack.Navigator
-        initialRouteName="Camera"
+        initialRouteName="Main"
         screenOptions={{
           headerShown: false,
           animation: "fade",
