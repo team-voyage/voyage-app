@@ -9,6 +9,7 @@ import Login from "@/pages/Login";
 import Home from "@/pages/Home";
 import Pod from "@/pages/Pod";
 import { RecoilRoot } from "recoil";
+import { AlertModal, ConfirmModal } from "./components/Modals";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,6 +42,15 @@ const App = () => {
             <RootStack.Screen name="Home" component={Home} />
             <RootStack.Screen name="Login" component={Login} />
             <RootStack.Screen name="Pod" component={Pod} />
+          </RootStack.Group>
+          <RootStack.Group screenOptions={{ 
+            presentation: "transparentModal",
+            animation: "fade",
+            animationDuration: 100,
+            contentStyle: { backgroundColor: "transparent" },
+          }}>
+            <RootStack.Screen name="Alert" component={AlertModal} />
+            <RootStack.Screen name="Confirm" component={ConfirmModal} />
           </RootStack.Group>
         </RootStack.Navigator>
       </NavigationContainer>

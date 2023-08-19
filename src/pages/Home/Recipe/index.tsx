@@ -1,6 +1,6 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 
 import colors from "@/utils/colors";
 import BackWhiteIcon from "@/assets/icons/backWhite.svg";
@@ -12,10 +12,12 @@ import styles from "./styles";
 import { useRecoilState } from "recoil";
 import { listAtom } from "../Map";
 import api from "@/utils/api";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 type props = NativeStackScreenProps<HomeStackParamList, "Recipe">;
 const Recipe = ({ navigation }: props) => {
   const [list, setList] = useRecoilState(listAtom);
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [sum, setSum] = React.useState(0);
   const [listCopy, setListCopy] = React.useState<{
     no: number;
@@ -34,6 +36,7 @@ const Recipe = ({ navigation }: props) => {
     setListCopy([]);
     setSum(0);
     list.map(async (item, index) => {
+      if(index === 0) setLoading(true);
       if(index === list.length - 1) return;
       const amount = await getTaxiAmount(item.address, list[index + 1].address);
       setSum((p) => p + parseInt(amount));
@@ -44,25 +47,43 @@ const Recipe = ({ navigation }: props) => {
         time: "13:27 PM ~ 13:56 PM", 
         amount,
       }]);
+      if(index === list.length - 2) setLoading(false);
     });
   }, [list]);
 
 
   const getTaxiAmount = async (start: string, goal: string) => {
-    console.log(start, goal);
-    const { data } = await api({
-      method: "post",
-      url: "/api/taxiByAddr",
-      data: {
-        start, goal
-      },
-    });
-    console.log(data);
-    return data;
+    try{
+      const { data } = await api({
+        method: "post",
+        url: "/api/taxiByAddr",
+        data: {
+          start, goal
+        },
+      });
+      return data;
+    } catch {
+      setLoading(false);
+      navigation.navigate("Alert", {
+        title: "Error",
+        context: "Please try again later.",
+        buttonText: "OK",
+        onClose: () => {
+          if(Platform.OS === "android") {
+            StatusBar.setBackgroundColor(colors.black);
+            StatusBar.setBarStyle("light-content");
+          }
+          setList([]);
+          navigation.navigate("Main");
+        }
+      });
+      return 0;
+    }
   };
 
   return (
     <View>
+      <LoadingSpinner show={loading} />
       <View style={styles.safeAreaTop} />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.top}>
