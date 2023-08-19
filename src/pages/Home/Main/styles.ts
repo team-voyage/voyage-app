@@ -1,0 +1,157 @@
+import colors, { opacity } from "@/utils/colors";
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  coverImage: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+  },
+  safeareaview: {
+    width: "100%", 
+    height: "100%",
+    backgroundColor: opacity(colors.black, 0.75),
+  },
+  top: {
+    display: "flex",
+    width: "100%",
+    paddingHorizontal: 24,
+    paddingVertical: 32,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 48,
+  },
+  hello: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  texts: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    alignSelf: "stretch",
+    gap: 8,
+
+  },
+  helloText: {
+    color: colors.white,
+    fontSize: 28,
+    fontStyle: "normal",
+    fontWeight: "400",
+  },
+  busan: {
+    color: colors.white,
+    fontSize: 28,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  busanImage: {
+    width: 38,
+    height: 38,
+  },
+  journey: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 18,
+    alignSelf: "stretch",
+  },
+  dates: {
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    flexDirection: "row",
+  },
+  date: {
+    color: colors.white,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  search: {
+    display: "flex",
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 77,
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignSelf: "stretch",
+    backgroundColor: colors.white,
+    flexDirection: "row",
+  },
+  serachText: {
+    color: opacity(colors.black, .3),
+    fontSize: 16,
+    fontStyle: "normal",
+    fontWeight: "300",
+  },
+  bottom: {
+    display: "flex",
+    width: "100%",
+    paddingVertical: 32,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 22,
+    backgroundColor: colors.white,
+    borderTopLeftRadius: 36,
+    borderTopRightRadius: 36,
+    position: "absolute",
+    bottom: 0,
+  },
+  bottomTitle: {
+    color: colors.black,
+    fontSize: 24,
+    fontStyle: "normal",
+    fontWeight: "600",
+    paddingHorizontal: 24,
+  },
+  btns: {
+    display: "flex",
+    paddingHorizontal: 24,
+    // paddingVertical: 32,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 24,
+  },
+  btnTitle: {
+    color: colors.black,
+    fontSize: 20,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  btnText: {
+    color: opacity(colors.black, .3),
+    fontSize: 14,
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
+  btnImage: {
+    width: "100%",
+    height: 180,
+  },
+  btn: {
+    overflow: "hidden",
+    width: 220,
+    height: 265,
+    borderRadius: 24,
+    backgroundColor: colors.white,
+
+    borderColor: opacity(colors.black, .1),
+    borderWidth: 2,
+  },
+  btnss: {
+    width: "100%",
+  },
+  titles: {
+    display: "flex",
+    flexDirection: "column",
+    height: 85,
+    justifyContent: "center",
+    paddingHorizontal: 12,
+  }
+});
