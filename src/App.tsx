@@ -31,7 +31,7 @@ const App = () => {
     <RecoilRoot>
       <NavigationContainer theme={rootTheme}>
         <RootStack.Navigator 
-          initialRouteName="Pod"
+          initialRouteName="Login"
           screenOptions={{
             headerShown: false,
             animation: "fade",
