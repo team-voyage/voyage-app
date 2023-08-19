@@ -44,6 +44,7 @@ const Map = ({ navigation }: props) => {
       <View style={styles.top}>
         <TouchableOpacity
           hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+          onPress={() => navigation.goBack()}
         >
           <PrevIcon width={10} height={20} />
         </TouchableOpacity>
@@ -97,6 +98,9 @@ const Map = ({ navigation }: props) => {
           <TouchableOpacity 
             style={styles.dest_cover}
             hitSlop={{ top: 7, bottom: 12 }}
+            onPress={() => {
+              navigation.navigate("Search");
+            }}
           >
             <Text style={styles.add}>+ add destination</Text>
           </TouchableOpacity>

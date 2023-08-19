@@ -12,7 +12,7 @@ import Recipe from "./Recipe";
 type props = NativeStackScreenProps<RootStackParamList, "Home">;
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
-const Home = ({ navigation: rootNavigation }: props) => {
+const Home = ({ navigation }: props) => {
   return (
     <View style={{
       width: "100%",
