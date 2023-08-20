@@ -1,10 +1,9 @@
 import { RootStackParamList } from "@/types";
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { LoginStackParamList } from "./types";
+import { View } from "react-native";
 
-import { Text, View } from "react-native";
-import colors from "@/utils/colors";
+import { LoginStackParamList } from "./types";
 
 import Local from "./Local";
 import Main from "./Main";

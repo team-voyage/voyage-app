@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Platform, SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, TextInput } from "react-native";
+import { Platform, SafeAreaView, StatusBar, Text, View, TouchableOpacity } from "react-native";
 
 import colors from "@/utils/colors";
 import ClosesIcon from "@/assets/icons/closes.svg";

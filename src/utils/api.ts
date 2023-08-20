@@ -16,12 +16,6 @@ const env = {
   NAVER_ADDR_SEARCH_URL: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode"
 };
 
-const api = axios.create({
-  baseURL: "https://voyage-one.vercel.app",
-});
-
-export const source = axios.CancelToken.source();
-
 export const survey = async () => {
   const survey = await axios.get(env.BUSAN_SURVEY_URL, {
     params: {
@@ -154,5 +148,3 @@ export const taxiByAddr = async (start: any, goal: any) => {
   // res.status(200).json();
   return fee.data.route.trafast[0].summary.taxiFare;
 };
-
-export default api;

@@ -10,7 +10,7 @@ import GhktkfvyIcon from "@/assets/icons/ghktkfvy.svg";
 
 import { HomeStackParamList } from "../types";
 import styles from "./styles";
-import api, { location, search, source } from "@/utils/api";
+import { location, search } from "@/utils/api";
 import { listAtom } from "../Map";
 import { useRecoilState } from "recoil";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -29,7 +29,6 @@ const Search = ({ navigation }: props) => {
 
   const getData = () => {
     if(input === "") return setData([]);
-    source.cancel();
     setSearchLoading(true);
     search(input).then(( data ) => {
       setData(data);

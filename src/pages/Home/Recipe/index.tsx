@@ -1,6 +1,6 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Alert, Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { Platform, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 
 import colors from "@/utils/colors";
 import BackWhiteIcon from "@/assets/icons/backWhite.svg";
@@ -11,7 +11,7 @@ import { HomeStackParamList } from "../types";
 import styles from "./styles";
 import { useRecoilState } from "recoil";
 import { listAtom } from "../Map";
-import api, { taxiByAddr } from "@/utils/api";
+import { taxiByAddr } from "@/utils/api";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 type props = NativeStackScreenProps<HomeStackParamList, "Recipe">;

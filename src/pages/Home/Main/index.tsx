@@ -8,7 +8,7 @@ import { HomeStackParamList } from "../types";
 import styles from "./styles";
 import CalendarIcon from "@/assets/icons/calendar.svg";
 import SendIcon from "@/assets/icons/send.svg";
-import api, { getImgUrl, location, search, survey } from "@/utils/api";
+import { getImgUrl, location, search, survey } from "@/utils/api";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { atom, useRecoilState } from "recoil";
 import { listAtom } from "../Map";

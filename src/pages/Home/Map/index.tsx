@@ -12,7 +12,7 @@ import { HomeStackParamList } from "../types";
 import BackMap from "@/components/BackMap";
 import styles from "./styles";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
-import api, {getAddr as getAddrApi} from "@/utils/api";
+import {getAddr as getAddrApi} from "@/utils/api";
 
 export const listAtom = atom<{
   name: string;
@@ -21,32 +21,7 @@ export const listAtom = atom<{
   longitude: number;
 }[]>({
   key: "listAtom",
-  default: [
-    // {
-    //   name: "ㅁㄴㅇㄹ1",
-    //   address: "부산광역시 남구 분포로 113",
-    //   latitude: 35.13033261235449,
-    //   longitude: 129.11098801797002,
-    // },
-    // {
-    //   name: "ㅁㄴㅇㄹ2",
-    //   address: "부산광역시 남구 분포로 111",
-    //   latitude: 35.13033261235449,
-    //   longitude: 129.11098801797002,
-    // },
-    // {
-    //   name: "ㅁㄴㅇㄹ3",
-    //   address: "부산광역시 동구 중앙대로 206",
-    //   latitude: 35.13033261235449,
-    //   longitude: 129.11098801797002,
-    // },
-    // {
-    //   name: "ㅁㄴㅇㄹ2",
-    //   address: "부산광역시 남구 분포로 111",
-    //   latitude: 35.13033261235449,
-    //   longitude: 129.11098801797002,
-    // },
-  ],
+  default: [],
 });
 
 export const latlongAtom = atom<{

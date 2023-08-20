@@ -1,6 +1,6 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 
 import BackIcon from "@/assets/icons/back.svg";
 import CarIcon from "@/assets/icons/car.svg";
@@ -8,7 +8,7 @@ import CarIcon from "@/assets/icons/car.svg";
 import { LoginStackParamList } from "../types";
 import styles from "./styles";
 
-type props = NativeStackScreenProps<LoginStackParamList, "Local">;
+type props = NativeStackScreenProps<LoginStackParamList, "End">;
 const Local = ({ navigation }: props) => {
   return (
     <SafeAreaView style={{width: "100%", height: "100%"}}>
