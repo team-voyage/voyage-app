@@ -65,7 +65,7 @@ const Map = ({ navigation }: props) => {
   const [list, setList] = useRecoilState(listAtom);
   const { latitude, longitude } = useRecoilValue(latlongAtom);
 
-  const [addr, setAddr] = React.useState("");
+  const [addr, setAddr] = React.useState("지구 어딘가");
 
   const getAddr = async () => {
     const { data } = await api({

@@ -10,14 +10,24 @@ import CalendarIcon from "@/assets/icons/calendar.svg";
 import SendIcon from "@/assets/icons/send.svg";
 import api from "@/utils/api";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { atom, useRecoilState } from "recoil";
+import { listAtom } from "../Map";
+
+export const hotplaceAtom = atom<{
+  spot: string;
+  url: string;
+  total: number;
+}[]>({
+  key: "hotplaceAtom",
+  default: [],
+});
 
 type props = NativeStackScreenProps<HomeStackParamList, "Main">;
 const Main = ({ navigation: homeNavigation }: props) => {
-  const [hotplace, setHotplace] = React.useState<{
-    spot: string;
-    url: string;
-    total: number;
-  }[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [list, setList] = useRecoilState(listAtom);
+
+  const [hotplace, setHotplace] = useRecoilState(hotplaceAtom);
 
   if(Platform.OS === "android") {
     StatusBar.setBackgroundColor(colors.black);
@@ -25,6 +35,8 @@ const Main = ({ navigation: homeNavigation }: props) => {
   }
 
   const getHotplace = async () => {
+    if(hotplace.length !== 0) return;
+    setLoading(true);
     const { data } = await api({
       method: "GET",
       url: "/api/survey"
@@ -44,6 +56,7 @@ const Main = ({ navigation: homeNavigation }: props) => {
       }
     }
     setHotplace(res);
+    setLoading(false);
   };
 
   React.useEffect(() => {
@@ -56,6 +69,8 @@ const Main = ({ navigation: homeNavigation }: props) => {
       style={styles.coverImage} 
       resizeMode="cover"
     >
+      <LoadingSpinner show={loading} />
+      
       <SafeAreaView style={styles.safeareaview}>
         <View style={styles.top}>
           <View style={styles.hello}>
@@ -86,14 +101,44 @@ const Main = ({ navigation: homeNavigation }: props) => {
 
 
         <View style={styles.bottom}>
-          <Text style={styles.bottomTitle}>🔥 Hot Place</Text>
+          <Text style={styles.bottomTitle}>👍 best course</Text>
           <ScrollView style={styles.btnss}
             horizontal={true}
           >
             <View style={styles.btns}>
               {
                 hotplace.map((item, index) => (
-                  <TouchableOpacity style={styles.btn} key={index}>
+                  <TouchableOpacity style={styles.btn} key={index} onPress={async () => {
+                    setLoading(true);
+                    try{
+                      const { data: addressData } = await api({
+                        method: "post",
+                        url: "/api/search",
+                        data: {
+                          location: item.spot,
+                        }
+                      });
+                      const { address } = addressData[0];
+                      const { data } = await api({
+                        method: "post",
+                        url: "/api/location",
+                        data: {
+                          address: address,
+                        }
+                      });
+                      setList([...list, {
+                        name: item.spot,
+                        address: address,
+                        latitude: parseFloat(data[0].y),
+                        longitude: parseFloat(data[0].x),
+                      }]);
+                      homeNavigation.navigate("Map");
+                    }
+                    catch {
+                      console.log("error");
+                    }
+                    setLoading(false);
+                  }}>
                     <Image source={{ uri: item.url }} style={styles.btnImage} />
                     <View style={styles.titles}>
                       <Text style={styles.btnTitle}>{item.spot}</Text>

@@ -8,6 +8,13 @@ import { useRecoilState, useRecoilValue } from "recoil";
 const BackMap = () => {
   const list = useRecoilValue(listAtom);
   const [latlong, setLatlong] = useRecoilState(latlongAtom);
+  const [delta, setDelta] = React.useState<{
+    latitudeDelta: number;
+    longitudeDelta: number;
+  }>({
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
 
   React.useEffect(() => {
     if(!list.length) return;
@@ -25,20 +32,24 @@ const BackMap = () => {
         initialRegion={{
           latitude: latlong.latitude,
           longitude: latlong.longitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: delta.latitudeDelta,
+          longitudeDelta: delta.longitudeDelta,
         }}
         region={{
-          latitude: list.length? latlong.latitude : 35.13033261235449,
+          latitude: list.length ? latlong.latitude : 35.13033261235449,
           longitude: list.length ? latlong.longitude : 129.11098801797002,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: delta.latitudeDelta,
+          longitudeDelta: delta.longitudeDelta,
         }}
         style={styles.map}
         onRegionChangeComplete={(region) => {
           setLatlong({
             latitude: region.latitude,
             longitude: region.longitude,
+          });
+          setDelta({
+            latitudeDelta: region.latitudeDelta,
+            longitudeDelta: region.longitudeDelta,
           });
         }}
       >
