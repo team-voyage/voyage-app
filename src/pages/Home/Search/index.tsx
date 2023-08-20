@@ -10,7 +10,7 @@ import GhktkfvyIcon from "@/assets/icons/ghktkfvy.svg";
 
 import { HomeStackParamList } from "../types";
 import styles from "./styles";
-import api, { source } from "@/utils/api";
+import api, { location, search, source } from "@/utils/api";
 import { listAtom } from "../Map";
 import { useRecoilState } from "recoil";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -31,13 +31,7 @@ const Search = ({ navigation }: props) => {
     if(input === "") return setData([]);
     source.cancel();
     setSearchLoading(true);
-    api({
-      method: "post",
-      url: "/api/search",
-      data: {
-        location: input,
-      }
-    }).then(({ data }) => {
+    search(input).then(( data ) => {
       setData(data);
       setSearchLoading(false);
     }).catch(() => {
@@ -91,13 +85,7 @@ const Search = ({ navigation }: props) => {
 
               const onPress = async () => {
                 setLoading(true);
-                const { data } = await api({
-                  method: "post",
-                  url: "/api/location",
-                  data: {
-                    address: item.address,
-                  }
-                });
+                const data = await location(item.address);
                 setList([...list, {
                   name: title,
                   address: item.address,

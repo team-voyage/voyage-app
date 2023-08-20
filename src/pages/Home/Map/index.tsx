@@ -12,7 +12,7 @@ import { HomeStackParamList } from "../types";
 import BackMap from "@/components/BackMap";
 import styles from "./styles";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
-import api from "@/utils/api";
+import api, {getAddr as getAddrApi} from "@/utils/api";
 
 export const listAtom = atom<{
   name: string;
@@ -68,10 +68,7 @@ const Map = ({ navigation }: props) => {
   const [addr, setAddr] = React.useState("지구 어딘가");
 
   const getAddr = async () => {
-    const { data } = await api({
-      method: "get",
-      url: `/api/getAddr?lon=${longitude}&lat=${latitude}`,
-    });
+    const data = await getAddrApi(longitude, latitude);
     setAddr(data);
   };
 

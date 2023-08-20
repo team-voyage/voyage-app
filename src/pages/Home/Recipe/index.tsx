@@ -11,7 +11,7 @@ import { HomeStackParamList } from "../types";
 import styles from "./styles";
 import { useRecoilState } from "recoil";
 import { listAtom } from "../Map";
-import api from "@/utils/api";
+import api, { taxiByAddr } from "@/utils/api";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 type props = NativeStackScreenProps<HomeStackParamList, "Recipe">;
@@ -54,13 +54,7 @@ const Recipe = ({ navigation }: props) => {
 
   const getTaxiAmount = async (start: string, goal: string) => {
     try{
-      const { data } = await api({
-        method: "post",
-        url: "/api/taxiByAddr",
-        data: {
-          start, goal
-        },
-      });
+      const data = await taxiByAddr(start, goal);
       return data;
     } catch {
       setLoading(false);
