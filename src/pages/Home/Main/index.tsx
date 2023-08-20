@@ -8,7 +8,7 @@ import { HomeStackParamList } from "../types";
 import styles from "./styles";
 import CalendarIcon from "@/assets/icons/calendar.svg";
 import SendIcon from "@/assets/icons/send.svg";
-import api from "@/utils/api";
+import { getImgUrl, location, search, survey } from "@/utils/api";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { atom, useRecoilState } from "recoil";
 import { listAtom } from "../Map";
@@ -37,19 +37,13 @@ const Main = ({ navigation: homeNavigation }: props) => {
   const getHotplace = async () => {
     if(hotplace.length !== 0) return;
     setLoading(true);
-    const { data } = await api({
-      method: "GET",
-      url: "/api/survey"
-    });
+    const data = await survey();
 
     const res = data.slice(0, 10);
     for(let i = 0; i < res.length; i++) {
       const item = res[i];
       try{
-        const { data } = await api({
-          method: "GET",
-          url: `/api/getImgUrl?q=${item.spot}`,
-        });
+        const data = await getImgUrl(item.spot);
         res[i].url = data;
       } catch {
         res[i].url = "";
@@ -111,21 +105,9 @@ const Main = ({ navigation: homeNavigation }: props) => {
                   <TouchableOpacity style={styles.btn} key={index} onPress={async () => {
                     setLoading(true);
                     try{
-                      const { data: addressData } = await api({
-                        method: "post",
-                        url: "/api/search",
-                        data: {
-                          location: item.spot,
-                        }
-                      });
+                      const addressData = await search(item.spot);
                       const { address } = addressData[0];
-                      const { data } = await api({
-                        method: "post",
-                        url: "/api/location",
-                        data: {
-                          address: address,
-                        }
-                      });
+                      const data = await location(address);
                       setList([...list, {
                         name: item.spot,
                         address: address,

@@ -10,7 +10,6 @@ import XWhiteIcon from "@/assets/icons/xwhite.svg";
 import { LoginStackParamList } from "../types";
 import styles from "./styles";
 import colors, { opacity } from "@/utils/colors";
-import { Picker } from "@react-native-picker/picker";
 
 type props = NativeStackScreenProps<LoginStackParamList, "Partner">;
 const Partner = ({ navigation }: props) => {

@@ -2,7 +2,6 @@ import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 
-import colors from "@/utils/colors";
 import KakaoIcon from "@/assets/icons/kakao.svg";
 
 import { LoginStackParamList } from "../types";

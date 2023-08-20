@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Platform, SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, TextInput, Image } from "react-native";
+import { Platform, SafeAreaView, StatusBar, Text, View, TouchableOpacity, TextInput, Image } from "react-native";
 
 import colors, { opacity } from "@/utils/colors";
 
